@@ -1,0 +1,13 @@
+<b><a href="https://app.close.io/lead/{{ lead.id }}">{{lead.display_name}}</a></b><br/>
+{% if lead.contacts %}
+  <b>Contacts:</b> {% if lead.contacts[0].name %}{{lead.contacts[0].name}}{% else %}Unnamed{% endif %}
+  {% if lead.contacts|length > 1 %}+{{ lead.contacts|length - 1}}{% endif %}<br/>
+{% endif %}
+<b>Status:</b> {{lead.status_label}}<br/>
+{% if lead.opportunities %}
+<b>Opportunities:</b>
+  {{orga.currency_symbol}}{{ '%0.2f'|format(lead.opportunities[0].value/100|round(2)) }}
+  {{lead.opportunities[0].value_period}} {{ lead.opportunities[0].status_label }}
+  {% if lead.opportunities|length > 1 %}+{{ lead.opportunities|length - 1 }}{% endif %}
+{% endif %}
+
