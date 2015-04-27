@@ -71,7 +71,7 @@ def get_api_key(tenant_id):
 
 def get_lead_info(api, lead_id):
     lead = api.get('lead/'+lead_id,
-                   data={'_fields': 'id,display_name,status_label,opportunities,contacts,organization_id'})
+                   data={'_fields': 'id,html_url,display_name,status_label,opportunities,contacts,organization_id'})
     return lead
 
 def get_orga_info(api, orga_id):
@@ -125,7 +125,7 @@ def save_configuration():
         db.session.add(close_io_api)
         db.session.commit()
 
-    return configure_page(success='New key was saved')
+    return configure_page(success='API key was saved')
 
 
 if __name__ == '__main__':
